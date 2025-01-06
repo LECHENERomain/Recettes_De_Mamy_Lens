@@ -19,4 +19,14 @@ class Recette extends Model
         'nb_personnes' => 'integer',
         'cout' => 'integer',
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function ingredient(){
+        return $this->belongsToMany(Ingredient::class, 'compose')
+            ->as('composants')
+            ->withPivot('quantite', 'observation');
+    }
 }

@@ -13,8 +13,12 @@
 
 <x-menu></x-menu>
 
-<main>
-    {{$slot}}
+<main><main>
+        @if(session('msg'))
+            <x-message-info :type="session('type')" :message="session('msg')"></x-message-info>
+        @endif
+        {{$slot}}
+    </main>
 </main>
 
 <aside>
